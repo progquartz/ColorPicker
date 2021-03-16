@@ -14,7 +14,7 @@ public class BlockSet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartBlockSet(5,5);
+        StartBlockSet(MaxX,MaxY);
     }
 
     /// <summary>
