@@ -5,8 +5,9 @@ using UnityEngine;
 public class BlockSet : MonoBehaviour
 {
     [SerializeField]
-    private GameObject block;
-
+    protected GameObject block;
+    [SerializeField]
+    protected Transform blockTrans;
     public List<GameObject> Blocks;
     public int MaxX;
     public int MaxY;
@@ -14,6 +15,7 @@ public class BlockSet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        blockTrans = transform.GetChild(0);
         StartBlockSet(MaxX,MaxY);
     }
 
@@ -26,14 +28,14 @@ public class BlockSet : MonoBehaviour
     {
         float blocksize = block.GetComponent<SpriteRenderer>().bounds.size.x;
         Vector3 blockPos = this.transform.position - new Vector3(MaxX * blocksize / 2, MaxY * blocksize / 2);
-        Transform BlockTrans = transform.GetChild(0);
+        
         for(int x = 0; x < MaxX; x++)
         {
             for(int y = 0; y < MaxY; y++)
             {
                 Blocks.Add(Instantiate(block, blockPos, Quaternion.Euler(0, 0, 0)));
-                Blocks[x * MaxY + y].GetComponent<Block>().BasicSet(x, y, Color.white);
-                Blocks[x * MaxY + y].transform.SetParent(BlockTrans);
+                Blocks[x * MaxY + y].GetComponent<Block>().BasicSet(x, y, Color.black);
+                Blocks[x * MaxY + y].transform.SetParent(blockTrans);
                 blockPos += new Vector3(0, blocksize);
             }
             blockPos.y = this.transform.position.y - (MaxY * blocksize / 2);

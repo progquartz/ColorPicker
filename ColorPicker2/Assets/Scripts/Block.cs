@@ -28,18 +28,4 @@ public class Block : MonoBehaviour
         y = _y;
         GetComponent<SpriteRenderer>().color = _color;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
 }
