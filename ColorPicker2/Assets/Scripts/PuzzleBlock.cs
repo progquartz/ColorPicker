@@ -14,6 +14,7 @@ public class PuzzleBlock : Block
     {
         return isContacted;
     }
+
     // 블럭터치됨.
     private void Start()
     {
@@ -62,7 +63,6 @@ public class PuzzleBlock : Block
     /// </summary>
     public void ColorPaste()
     {
-
         Color targetcolor = colorTargetBlock.GetComponent<Block>().GetColor() + this.GetComponent<Block>().GetColor();
         colorTargetBlock.GetComponent<Block>().SetColor(targetcolor);
     }
